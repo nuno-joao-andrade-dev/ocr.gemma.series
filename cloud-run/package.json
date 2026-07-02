@@ -4,10 +4,16 @@
   "type": "module",
   "main": "index.js",
   "dependencies": {
-    "@google/adk": "^0.3.0",
-    "@google-cloud/storage": "^7.11.2",
-    "express": "^4.19.2",
-    "dotenv": "^16.4.5"
+    "@google/adk": "^1.3.0",
+    "@google-cloud/storage": "^7.21.0",
+    "express": "^5.2.1",
+    "dotenv": "^17.4.2"
+  },
+  "overrides": {
+    "uuid": "^11.1.1",
+    "tar": "^7.5.19",
+    "@tootallnate/once": "^3.0.1",
+    "@opentelemetry/core": "^2.8.0"
   },
   "scripts": {
     "start": "node index.js"
