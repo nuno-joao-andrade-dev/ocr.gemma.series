@@ -216,11 +216,11 @@ app.post('/api/documents', (req, res) => {
   res.json({ success: true });
 });
 
-// Helper to call local Ollama model (gemma4:latest) directly
+// Helper to call local Ollama model (gemma4:e2b) directly
 async function runLocalOllama(prompt, base64Image = null, mimeType = null, systemPrompt = null) {
   const url = 'http://localhost:11434/api/generate';
   const body = {
-    model: 'gemma4:latest',
+    model: 'gemma4:e2b',
     prompt: prompt,
     stream: false,
     options: {
@@ -254,7 +254,7 @@ async function runLocalOllama(prompt, base64Image = null, mimeType = null, syste
 const ocrAgent = new LlmAgent({
   name: 'gemma4_ocr_agent',
   description: 'OCR Agent that extracts structured metadata and high-fidelity text content from documents/images.',
-  model: process.env.MODEL_NAME || 'gemma4:latest',
+  model: process.env.MODEL_NAME || 'gemma4:e2b',
   instruction: `You are an expert Google Developer Groups (GDG) Document Digitalization and OCR AI Agent.
 Your task is to process the uploaded document image and perform two main tasks:
 1. Retrieve all possible metadata from the file, such as document title, estimated creation date, author/organization, and any other relevant fields you can deduce.
@@ -304,7 +304,7 @@ app.post('/api/upload', async (req, res) => {
     
     // 1. Try Local Ollama first
     try {
-      console.log(`[Local Real OCR] Trying local Ollama model gemma4:latest...`);
+      console.log(`[Local Real OCR] Trying local Ollama model gemma4:e2b...`);
       const ocrPrompt = `Please OCR this document image. Retrieve all metadata and extract all visible text blocks with their normalized [ymin, xmin, ymax, xmax] coordinates (0.0 to 1.0).`;
       const ocrResponseText = await runLocalOllama(ocrPrompt, base64Data, mimeType, ocrAgent.instruction);
       ocrData = parseAgentJson(ocrResponseText);
@@ -510,7 +510,7 @@ Text Blocks and Coordinates: ${JSON.stringify(d.text_blocks)}`;
     let ragResult;
     // 1. Try Local Ollama first
     try {
-      console.log(`[RAG Search Start] Trying Local Ollama model gemma4:latest...`);
+      console.log(`[RAG Search Start] Trying Local Ollama model gemma4:e2b...`);
       const ragPrompt = `Search Query: "${query}"\n\nDigitized Documents Context:\n${docContexts}`;
       const ragResponseText = await runLocalOllama(ragPrompt, null, null, ragAgent.instruction);
       ragResult = parseAgentJson(ragResponseText);

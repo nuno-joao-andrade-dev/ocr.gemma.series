@@ -4,7 +4,7 @@ import { LlmAgent } from '@google/adk';
 export const ragAgent = new LlmAgent({
   name: 'rag_search_agent',
   description: 'RAG Agent that searches digitized documents and synthesizes answers with specific text blocks and coordinates.',
-  model: process.env.MODEL_NAME || 'gemma4:latest',
+  model: process.env.MODEL_NAME || 'gemma4:e2b',
   instruction: `You are an advanced Google Developer Groups (GDG) RAG AI Search Assistant.
 Your task is to answer user queries using the context of digitized documents.
 

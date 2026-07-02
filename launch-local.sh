@@ -66,10 +66,10 @@ if curl -s -f http://localhost:11434/api/tags &>/dev/null; then
   # Check if gemma4 model is available
   GEMMA_PULLED=$(curl -s http://localhost:11434/api/tags | grep -q "gemma4" && echo "true" || echo "false")
   if [ "$GEMMA_PULLED" = "true" ]; then
-    echo -e "${GREEN}✓ Model 'gemma4:latest' is available for OCR & RAG workloads.${NC}"
+    echo -e "${GREEN}✓ Model 'gemma4:e2b' is available for OCR & RAG workloads.${NC}"
   else
-    echo -e "${YELLOW}⚠️ Model 'gemma4:latest' is not found in your local Ollama registry.${NC}"
-    echo -e "${YELLOW}   If you want to use local Gemma 4, run: ${BOLD}ollama pull gemma4${NC}"
+    echo -e "${YELLOW}⚠️ Model 'gemma4:e2b' is not found in your local Ollama registry.${NC}"
+    echo -e "${YELLOW}   If you want to use local Gemma 4, run: ${BOLD}ollama pull gemma4:e2b${NC}"
     echo -e "${CYAN}   No worries! The app will automatically fall back to ADK ocrAgent / Mock modes.${NC}"
   fi
 else
@@ -85,7 +85,7 @@ echo -e "${CYAN}${BOLD}[4/4] Starting Local Frontend & RAG Server...${NC}"
 # Export default configuration variables for the demo
 export INPUT_BUCKET="gdg-bulk-ocr-input"
 export OUTPUT_BUCKET="gdg-bulk-ocr-output"
-export MODEL_NAME="gemma4:latest"
+export MODEL_NAME="gemma4:e2b"
 export PORT=3000
 
 echo -e "${MAGENTA}${BOLD}--------------------------------------------------------------------------${NC}"

@@ -8,7 +8,7 @@ export function getOllamaModel() {
   if (process.env.MODEL_NAME && !process.env.MODEL_NAME.startsWith('gemini-')) {
     return process.env.MODEL_NAME;
   }
-  return 'gemma4:latest';
+  return 'gemma4:e2b';
 }
 
 // Define custom Ollama LLM provider class for ADK
@@ -48,7 +48,7 @@ class OllamaLlm extends BaseLlm {
     const ollamaHost = process.env.OLLAMA_HOST || 'http://localhost:11434';
     const url = `${ollamaHost}/api/generate`;
     const body = {
-      model: this.model || 'gemma4:latest',
+      model: this.model || 'gemma4:e2b',
       prompt: prompt || 'Analyze this document.',
       stream: false,
       options: {
@@ -100,7 +100,7 @@ export const ocrAgent = new LlmAgent({
   name: 'gemma4_ocr_agent',
   description: 'OCR Agent that extracts structured metadata and high-fidelity text content from documents/images.',
   // Use the MODEL_NAME from environment variables, defaulting to gemini-2.5-flash for reliability
-  model: process.env.MODEL_NAME || 'gemma4:latest',
+  model: process.env.MODEL_NAME || 'gemma4:e2b',
   instruction: `You are an expert Google Developer Groups (GDG) Document Digitalization and OCR AI Agent.
 Your task is to process the uploaded document image and perform two main tasks:
 1. Retrieve all possible metadata from the file, such as document title, estimated creation date, author/organization, and any other relevant fields you can deduce.

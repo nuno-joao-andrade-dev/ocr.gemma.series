@@ -83,7 +83,7 @@ function App() {
         } else if (progress < 55) {
           setSearchStep('Retrieving high-fidelity context blocks and coordinates...');
         } else if (progress < 80) {
-          setSearchStep('Generating semantic response with gemma4:latest...');
+          setSearchStep('Generating semantic response with gemma4:e2b...');
         } else {
           setSearchStep('Formatting structured answer, metadata, and citation overlays...');
         }

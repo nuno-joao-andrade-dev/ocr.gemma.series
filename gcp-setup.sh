@@ -29,7 +29,7 @@ OUTPUT_BUCKET="${PROJECT_ID}-bulk-ocr-output"
 TOPIC_NAME="bulk-ocr-uploads"
 SUBSCRIPTION_NAME="bulk-ocr-cloudrun-sub"
 SERVICE_NAME="bulk-ocr-service"
-MODEL_NAME="gemma4:latest" # The Gemma-4 model name for local Ollama OCR
+MODEL_NAME="gemma4:e2b" # The Gemma-4 model name for local Ollama OCR
 
 echo "=========================================================================="
 echo "🚀 Initializing GCP Infrastructure Provisioning"
